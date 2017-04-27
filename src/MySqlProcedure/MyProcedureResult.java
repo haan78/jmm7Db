@@ -14,8 +14,8 @@ import java.util.Map;
  */
 
 public class MyProcedureResult {
-    public List<List<Map<String,Object>>> queries;
-    private Map<String,Object> outputs;
+    public final List<List<Map<String,Object>>> queries;
+    public final Map<String,Object> outputs;
 
     public MyProcedureResult(List<List<Map<String,Object>>> queries, Map<String,Object> outputs) {
         this.queries = queries;
