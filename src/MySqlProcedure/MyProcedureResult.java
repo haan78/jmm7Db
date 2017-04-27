@@ -14,21 +14,11 @@ import java.util.Map;
  */
 
 public class MyProcedureResult {
-    private List<List<Map<String,Object>>> data;
-    private Map<String,Object> outs;
+    public List<List<Map<String,Object>>> queries;
+    private Map<String,Object> outputs;
 
-    public MyProcedureResult(List<List<Map<String,Object>>> data, Map<String,Object> outs) {
-        this.data = data;
-        this.outs = outs;
-    }
-    
-    
-    public List<List<Map<String,Object>>> getData() {
-        return data;
-    }
-    
-    public Map<String,Object> getOutputs() {
-        return outs;
-    }
-    
+    public MyProcedureResult(List<List<Map<String,Object>>> queries, Map<String,Object> outputs) {
+        this.queries = queries;
+        this.outputs = outputs;
+    }    
 }
