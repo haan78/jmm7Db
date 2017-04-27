@@ -27,7 +27,7 @@ public class MyLBinary extends MyParam {
 
     @Override
     public int getSQLType() {
-        return java.sql.Types.VARBINARY;
+        return java.sql.Types.LONGVARBINARY;
     }
 
     @Override
