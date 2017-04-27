@@ -3,21 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MySqlProcedure;
+package MySqlProcedure.Param;
 
 /**
  *
  * @author BARIS
  */
-public class MyIntParam extends MyProcedureParam {
+public class MyInt extends MyParam {
     
     private Integer value;
 
-    public MyIntParam(Integer value ) {
+    public MyInt(Integer value ) {
         setValue(value);
     }
 
-    public MyIntParam(Integer value,String name) {
+    public MyInt(Integer value,String name) {
         setValue(value);
         setName(name);        
     }

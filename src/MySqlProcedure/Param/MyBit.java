@@ -3,37 +3,40 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MySqlProcedure;
+package MySqlProcedure.Param;
 
 /**
  *
  * @author BARIS
  */
-public class MyBigintParam extends MyProcedureParam {
+public class MyBit extends MyParam {
 
-    private Long value;
-    
-    public MyBigintParam(Long value ) {
+    private Boolean value;
+
+    public MyBit(Boolean value ) {
         setValue(value);
     }
 
-    public MyBigintParam(Long value,String name) {
+    public MyBit(Boolean value,String name) {
         setValue(value);
         setName(name);        
     }
 
-    public final void setValue(Long value) {
+    public final void setValue(Boolean value) {
         this.value = value;
     }
-    
+
     @Override
     public int getSQLType() {
-        return java.sql.Types.BIGINT;
+        return java.sql.Types.BIT;
     }
 
     @Override
     public Object getParamValue() {
-        return value;
+        if ( value == null ) return null;
+        else if ( value==true ) return 1;
+        else return 0;
+        
     }
     
 }

@@ -5,6 +5,7 @@
  */
 package MySqlProcedure;
 
+import MySqlProcedure.Param.MyParam;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,11 +23,11 @@ import java.util.Map;
  */
 public class MyProcedure {
     
-    private final ArrayList<MyProcedureParam> params;
+    private final ArrayList<MyParam> params;
     private final Connection connection;
     private String lastSQL;
     
-    public MyProcedure param(MyProcedureParam param) {
+    public MyProcedure param(MyParam param) {
         params.add(param);
         return this;
     }

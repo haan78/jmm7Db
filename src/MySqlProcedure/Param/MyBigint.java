@@ -3,38 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MySqlProcedure;
-
-import java.text.Format;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+package MySqlProcedure.Param;
 
 /**
  *
  * @author BARIS
  */
-public class MyDateParam extends MyProcedureParam {
+public class MyBigint extends MyParam {
 
-    private Date value;
+    private Long value;
     
-    public MyDateParam(Date value ) {
+    public MyBigint(Long value ) {
         setValue(value);
     }
 
-    public MyDateParam(Date value,String name) {
+    public MyBigint(Long value,String name) {
         setValue(value);
         setName(name);        
     }
 
-    public final void setValue(Date value) {
+    public final void setValue(Long value) {
         this.value = value;
     }
-
+    
     @Override
     public int getSQLType() {
-        return java.sql.Types.DATE;
+        return java.sql.Types.BIGINT;
     }
-    
+
     @Override
     public Object getParamValue() {
         return value;

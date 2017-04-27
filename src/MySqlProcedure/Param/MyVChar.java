@@ -3,22 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MySqlProcedure;
+package MySqlProcedure.Param;
 
 /**
  *
  * @author BARIS
  */
-public class MyStringParam extends MyProcedureParam {
+public class MyVChar extends MyParam {
 
     private String value;
     private boolean noEmpty = true;    
 
-    public MyStringParam(String value ) {        
+    public MyVChar(String value ) {        
         setValue(value);
     }
 
-    public MyStringParam(String value,String name) {
+    public MyVChar(String value,String name) {
         setValue(value);
         setName(name);        
     }

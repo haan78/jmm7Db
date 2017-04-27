@@ -3,26 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MySqlProcedure;
+package MySqlProcedure.Param;
 
 /**
  *
  * @author BARIS
  */
-public class MyFloatParam extends MyProcedureParam {
+public class MyFloat extends MyParam {
     
-    private Float value = null;
+    private Double value = null;
     
-    public MyFloatParam(Float value ) {
+    public MyFloat(Double value ) {
         setValue(value);
     }
 
-    public MyFloatParam(Float value,String name) {        
+    public MyFloat(Double value,String name) {        
         setValue(value);
         setName(name);        
     }
 
-    public final void setValue(Float value) {
+    public final void setValue(Double value) {
         this.value = value;
     }
 

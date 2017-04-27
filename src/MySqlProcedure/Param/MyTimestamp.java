@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MySqlProcedure;
+package MySqlProcedure.Param;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;
@@ -13,15 +13,15 @@ import java.util.Date;
  *
  * @author BARIS
  */
-public class MyTimestampParam extends MyProcedureParam {
+public class MyTimestamp extends MyParam {
 
     private Date value;
     
-    public MyTimestampParam(Date value ) {
+    public MyTimestamp(Date value ) {
         setValue(value);
     }
 
-    public MyTimestampParam(Date value,String name) {
+    public MyTimestamp(Date value,String name) {
         setValue(value);
         setName(name);        
     }
