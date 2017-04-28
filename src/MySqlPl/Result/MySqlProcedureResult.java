@@ -11,8 +11,6 @@ package MySqlPl.Result;
  */
 
 public class MySqlProcedureResult {
-    //public final List<List<Map<String,Object>>> queries;
-    //public final Map<String,Object> outputs;
     
     public final MySqlQueryResultSet queries;
     public final MySqlRowResult outputs;
