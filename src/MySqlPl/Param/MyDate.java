@@ -3,40 +3,41 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MySqPl.Param;
+package MySqlPl.Param;
+
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
  * @author BARIS
  */
-public class MyBit extends MyParam {
+public class MyDate extends MyParam {
 
-    private Boolean value;
-
-    public MyBit(Boolean value ) {
+    private Date value;
+    
+    public MyDate(Date value ) {
         setValue(value);
     }
 
-    public MyBit(Boolean value,String name) {
+    public MyDate(Date value,String name) {
         setValue(value);
         setName(name);        
     }
 
-    public final void setValue(Boolean value) {
+    public final void setValue(Date value) {
         this.value = value;
     }
 
     @Override
     public int getSQLType() {
-        return java.sql.Types.BIT;
+        return java.sql.Types.DATE;
     }
-
+    
     @Override
     public Object getParamValue() {
-        if ( value == null ) return null;
-        else if ( value==true ) return 1;
-        else return 0;
-        
+        return value;
     }
     
 }

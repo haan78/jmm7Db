@@ -3,36 +3,35 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MySqPl.Param;
+package MySqlPl.Param;
 
 /**
  *
  * @author BARIS
  */
-public class MyInt extends MyParam {
+public class MyVBinary extends MyParam {
+    private byte[] value;
     
-    private Integer value;
-
-    public MyInt(Integer value ) {
+    public MyVBinary(byte[] value ) {
         setValue(value);
     }
 
-    public MyInt(Integer value,String name) {
+    public MyVBinary(byte[] value,String name) {
         setValue(value);
         setName(name);        
     }
 
-    public final void setValue(Integer value) {
+    public final void setValue(byte[] value) {
         this.value = value;
-    }    
+    }
 
     @Override
     public int getSQLType() {
-        return java.sql.Types.INTEGER;
+        return java.sql.Types.VARBINARY;
     }
-    
+
     @Override
     public Object getParamValue() {
-        return value;
-    }
+        return value;        
+    }  
 }

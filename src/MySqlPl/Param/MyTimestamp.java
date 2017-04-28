@@ -3,35 +3,41 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MySqPl.Param;
+package MySqlPl.Param;
+
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
  * @author BARIS
  */
-public class MyVBinary extends MyParam {
-    private byte[] value;
+public class MyTimestamp extends MyParam {
+
+    private Date value;
     
-    public MyVBinary(byte[] value ) {
+    public MyTimestamp(Date value ) {
         setValue(value);
     }
 
-    public MyVBinary(byte[] value,String name) {
+    public MyTimestamp(Date value,String name) {
         setValue(value);
         setName(name);        
     }
 
-    public final void setValue(byte[] value) {
+    public final void setValue(Date value) {
         this.value = value;
     }
 
     @Override
     public int getSQLType() {
-        return java.sql.Types.VARBINARY;
+        return java.sql.Types.TIMESTAMP;
     }
-
+    
     @Override
     public Object getParamValue() {
-        return value;        
-    }  
+        return value;
+    }
+    
 }

@@ -3,43 +3,36 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MySqPl.Param;
+package MySqlPl.Param;
 
 /**
  *
  * @author BARIS
  */
-public class MyChar extends MyParam {
-
-    private String value;
-    private boolean noEmpty = true;    
-
-    public MyChar(String value ) {        
+public class MyReal extends MyParam {
+    
+    private Float value = null;
+    
+    public MyReal(Float value ) {
         setValue(value);
     }
 
-    public MyChar(String value,String name) {
+    public MyReal(Float value,String name) {        
         setValue(value);
         setName(name);        
     }
 
-    public final void setValue(String value) {
+    public final void setValue(Float value) {
         this.value = value;
     }
 
-    public void setNoEmpty(boolean noEmpty) {
-        this.noEmpty = noEmpty;
-    } 
-
     @Override
     public int getSQLType() {
-        return java.sql.Types.CHAR;
+        return java.sql.Types.FLOAT;
     }
     
     @Override
     public Object getParamValue() {
-        if ( value == null ) return null; else
-        if ( (noEmpty) && (value.isEmpty()) ) return null; else
         return value;
     }
     

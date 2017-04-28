@@ -3,21 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MySqPl.Param;
+package MySqlPl.Param;
 
 /**
  *
  * @author BARIS
  */
-public class MyBinary extends MyParam {
-
+public class MyLBinary extends MyParam {
     private byte[] value;
     
-    public MyBinary(byte[] value ) {
+    public MyLBinary(byte[] value ) {
         setValue(value);
     }
 
-    public MyBinary(byte[] value,String name) {
+    public MyLBinary(byte[] value,String name) {
         setValue(value);
         setName(name);        
     }
@@ -28,11 +27,11 @@ public class MyBinary extends MyParam {
 
     @Override
     public int getSQLType() {
-        return java.sql.Types.BINARY;
+        return java.sql.Types.LONGVARBINARY;
     }
 
     @Override
     public Object getParamValue() {
         return value;        
-    }    
+    }  
 }

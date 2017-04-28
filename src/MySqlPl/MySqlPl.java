@@ -3,9 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MySqPl;
+package MySqlPl;
 
-import MySqPl.Param.MyParam;
+import MySqlPl.Result.MySqlQueryResult;
+import MySqlPl.Result.MySqlProcedureResult;
+import MySqlPl.Result.MySqlQueryResultSet;
+import MySqlPl.Result.MySqlRowResult;
+import MySqlPl.Param.MyParam;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -39,8 +43,7 @@ public class MySqlPl {
 
     public String getLastSQL() {
         return lastSQL;
-    }    
-
+    }        
     
     public MySqlProcedureResult call(String procedure) throws SQLException {
         
@@ -79,11 +82,13 @@ public class MySqlPl {
             }           
         }
         
-        List<List<Map<String,Object>>> data = new ArrayList<>();
+        //List<List<Map<String,Object>>> data = new ArrayList<>();
+        MySqlQueryResultSet data = new MySqlQueryResultSet();
         
         boolean hasMore = cstmt.execute();        
         
-        HashMap<String,Object> outs = new HashMap<>();
+        //HashMap<String,Object> outs = new HashMap<>();
+        MySqlRowResult outs = new MySqlRowResult();
         for (int i=0; i<outids.length; i++) {
             outs.put( params.get( outids[i] ).getName() , cstmt.getObject( outids[i]+1 ) ); // +1 in nedeni java parametreleri birden balayarak sayiyior
         }
@@ -93,9 +98,12 @@ public class MySqlPl {
             if ( rs!=null ) {
                 ResultSetMetaData md = rs.getMetaData();
                 
-                ArrayList<Map<String,Object>> q = new ArrayList<>();
+                //ArrayList<Map<String,Object>> q = new ArrayList<>();
+                MySqlQueryResult q = new MySqlQueryResult();
+                
                 while(rs.next()) {
-                    HashMap<String,Object> row = new HashMap<>();
+                    //HashMap<String,Object> row = new HashMap<>();
+                    MySqlRowResult row = new MySqlRowResult();
                     for (int k = 1; k<md.getColumnCount()+1; k++ ) {                
                         row.put(md.getColumnLabel(k),rs.getObject(k));
                     }

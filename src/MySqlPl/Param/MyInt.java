@@ -3,39 +3,36 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MySqPl.Param;
-
-import java.math.BigDecimal;
+package MySqlPl.Param;
 
 /**
  *
  * @author BARIS
  */
-public class MyDecimal extends MyParam {
+public class MyInt extends MyParam {
     
-    private BigDecimal value = null;
-    
-    public MyDecimal(BigDecimal value ) {
+    private Integer value;
+
+    public MyInt(Integer value ) {
         setValue(value);
     }
 
-    public MyDecimal(BigDecimal value,String name) {        
+    public MyInt(Integer value,String name) {
         setValue(value);
         setName(name);        
     }
 
-    public final void setValue(BigDecimal value) {
+    public final void setValue(Integer value) {
         this.value = value;
-    }
+    }    
 
     @Override
     public int getSQLType() {
-        return java.sql.Types.DECIMAL;
+        return java.sql.Types.INTEGER;
     }
     
     @Override
     public Object getParamValue() {
         return value;
     }
-    
 }

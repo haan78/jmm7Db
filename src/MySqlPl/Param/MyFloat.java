@@ -3,36 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MySqPl.Param;
-
-import java.sql.Time;
+package MySqlPl.Param;
 
 /**
  *
  * @author BARIS
  */
-public class MyTime extends MyParam {
+public class MyFloat extends MyParam {
     
-    private Time value;
-
-    public MyTime(Time value ) {
+    private Double value = null;
+    
+    public MyFloat(Double value ) {
         setValue(value);
     }
 
-    public MyTime(Time value,String name) {
+    public MyFloat(Double value,String name) {        
         setValue(value);
         setName(name);        
     }
-    
-    public final void setValue(Time value) {
+
+    public final void setValue(Double value) {
         this.value = value;
     }
 
     @Override
     public int getSQLType() {
-        return java.sql.Types.TIME;
+        return java.sql.Types.FLOAT;
     }
-
+    
     @Override
     public Object getParamValue() {
         return value;
