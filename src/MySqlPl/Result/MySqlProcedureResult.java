@@ -5,9 +5,6 @@
  */
 package MySqlPl.Result;
 
-import MySqlPl.Result.MySqlQueryResultSet;
-import MySqlPl.Result.MySqlRowResult;
-
 /**
  *
  * @author BARIS
