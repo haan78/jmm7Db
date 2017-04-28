@@ -98,11 +98,9 @@ public class MySqlPl {
             if ( rs!=null ) {
                 ResultSetMetaData md = rs.getMetaData();
                 
-                //ArrayList<Map<String,Object>> q = new ArrayList<>();
                 MySqlQueryResult q = new MySqlQueryResult();
                 
-                while(rs.next()) {
-                    //HashMap<String,Object> row = new HashMap<>();
+                while(rs.next()) {                    
                     MySqlRowResult row = new MySqlRowResult();
                     for (int k = 1; k<md.getColumnCount()+1; k++ ) {                
                         row.put(md.getColumnLabel(k),rs.getObject(k));
@@ -134,11 +132,73 @@ public class MySqlPl {
         
         ResultSet rs = pstmt.executeQuery();
         
-        if ( rs!=null ) {
-            result = rs.getObject(1);
+        params.clear();
+        if ( (rs!=null) && (rs.next()) ) {            
+            return rs.getObject(1);
+        } else {
+            return null;
+        }    
+        
+    }
+    
+    public MySqlQueryResult query(String sql) throws SQLException {
+        PreparedStatement pstmt = connection.prepareStatement(sql);
+        
+        for (int i=0; i<params.size(); i++) {
+            pstmt.setObject(i+1, params.get(i).getParamValue(), params.get(i).getSQLType() );
         }
-        params.clear();        
-        return result;
+        
+        ResultSet rs = pstmt.executeQuery();
+        
+        MySqlQueryResult q = new MySqlQueryResult();
+        
+        if ( rs!=null ) {
+            
+            ResultSetMetaData md = rs.getMetaData();           
+            
+            while ( rs.next() ) {
+                MySqlRowResult row = new MySqlRowResult();
+                for (int k = 1; k<md.getColumnCount()+1; k++ ) {                
+                    row.put(md.getColumnLabel(k),rs.getObject(k));
+                }
+                q.add(row);
+            }           
+            
+        }
+        
+        params.clear();
+        
+        return q;
+        
+    }
+    
+    public Object result(String sql) throws SQLException {
+        PreparedStatement pstmt = connection.prepareStatement(sql);
+        
+        for (int i=0; i<params.size(); i++) {
+            pstmt.setObject(i+1, params.get(i).getParamValue(), params.get(i).getSQLType() );
+        }
+        
+        ResultSet rs = pstmt.executeQuery();
+        
+        if ( (rs!=null) && (rs.next()) ) {            
+            return rs.getObject(1);
+        } else {
+            return null;
+        }
+        
+    }
+    
+    public int execute(String sql) throws SQLException {
+        PreparedStatement pstmt = connection.prepareStatement(sql);
+        for (int i=0; i<params.size(); i++) {
+            pstmt.setObject(i+1, params.get(i).getParamValue(), params.get(i).getSQLType() );
+        }
+        
+        params.clear();
+        
+        return pstmt.executeUpdate();
+        
     }
     
 }
