@@ -3,36 +3,37 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MySqlProcedure.Param;
+package MySqPl.Param;
 
 /**
  *
  * @author BARIS
  */
-public class MyBinary extends MyParam {
-
-    private byte[] value;
+public class MyFloat extends MyParam {
     
-    public MyBinary(byte[] value ) {
+    private Double value = null;
+    
+    public MyFloat(Double value ) {
         setValue(value);
     }
 
-    public MyBinary(byte[] value,String name) {
+    public MyFloat(Double value,String name) {        
         setValue(value);
         setName(name);        
     }
 
-    public final void setValue(byte[] value) {
+    public final void setValue(Double value) {
         this.value = value;
     }
 
     @Override
     public int getSQLType() {
-        return java.sql.Types.BINARY;
+        return java.sql.Types.FLOAT;
     }
-
+    
     @Override
     public Object getParamValue() {
-        return value;        
-    }    
+        return value;
+    }
+    
 }

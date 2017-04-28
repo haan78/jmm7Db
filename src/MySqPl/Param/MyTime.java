@@ -3,35 +3,39 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MySqlProcedure.Param;
+package MySqPl.Param;
+
+import java.sql.Time;
 
 /**
  *
  * @author BARIS
  */
-public class MyVBinary extends MyParam {
-    private byte[] value;
+public class MyTime extends MyParam {
     
-    public MyVBinary(byte[] value ) {
+    private Time value;
+
+    public MyTime(Time value ) {
         setValue(value);
     }
 
-    public MyVBinary(byte[] value,String name) {
+    public MyTime(Time value,String name) {
         setValue(value);
         setName(name);        
     }
-
-    public final void setValue(byte[] value) {
+    
+    public final void setValue(Time value) {
         this.value = value;
     }
 
     @Override
     public int getSQLType() {
-        return java.sql.Types.VARBINARY;
+        return java.sql.Types.TIME;
     }
 
     @Override
     public Object getParamValue() {
-        return value;        
-    }  
+        return value;
+    }
+    
 }

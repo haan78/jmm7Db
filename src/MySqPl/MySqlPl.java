@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MySqlProcedure;
+package MySqPl;
 
-import MySqlProcedure.Param.MyParam;
+import MySqPl.Param.MyParam;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,18 +21,18 @@ import java.util.Map;
  *
  * @author BARIS
  */
-public class MyProcedure {
+public class MySqlPl {
     
     private final ArrayList<MyParam> params;
     private final Connection connection;
     private String lastSQL;
     
-    public MyProcedure param(MyParam param) {
+    public MySqlPl param(MyParam param) {
         params.add(param);
         return this;
     }
 
-    public MyProcedure(Connection connection) {
+    public MySqlPl(Connection connection) {
         params = new ArrayList<>();
         this.connection = connection;        
     }
@@ -42,7 +42,7 @@ public class MyProcedure {
     }    
 
     
-    public MyProcedureResult call(String procedure) throws SQLException {
+    public MySqlProcedureResult call(String procedure) throws SQLException {
         
         //return execute( generateProcedureSql(procedure) );
         String args = "";
@@ -106,7 +106,7 @@ public class MyProcedure {
             hasMore = cstmt.getMoreResults();
         }
         params.clear();        
-        return new MyProcedureResult(data,outs);
+        return new MySqlProcedureResult(data,outs);
     }
     
     public Object function(String functionName) throws SQLException {

@@ -3,35 +3,41 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MySqlProcedure.Param;
+package MySqPl.Param;
+
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
  * @author BARIS
  */
-public class MyLBinary extends MyParam {
-    private byte[] value;
+public class MyDate extends MyParam {
+
+    private Date value;
     
-    public MyLBinary(byte[] value ) {
+    public MyDate(Date value ) {
         setValue(value);
     }
 
-    public MyLBinary(byte[] value,String name) {
+    public MyDate(Date value,String name) {
         setValue(value);
         setName(name);        
     }
 
-    public final void setValue(byte[] value) {
+    public final void setValue(Date value) {
         this.value = value;
     }
 
     @Override
     public int getSQLType() {
-        return java.sql.Types.LONGVARBINARY;
+        return java.sql.Types.DATE;
     }
-
+    
     @Override
     public Object getParamValue() {
-        return value;        
-    }  
+        return value;
+    }
+    
 }

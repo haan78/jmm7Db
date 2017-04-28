@@ -3,36 +3,37 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MySqlProcedure.Param;
+package MySqPl.Param;
 
 /**
  *
  * @author BARIS
  */
-public class MyInt extends MyParam {
+public class MyReal extends MyParam {
     
-    private Integer value;
-
-    public MyInt(Integer value ) {
+    private Float value = null;
+    
+    public MyReal(Float value ) {
         setValue(value);
     }
 
-    public MyInt(Integer value,String name) {
+    public MyReal(Float value,String name) {        
         setValue(value);
         setName(name);        
     }
 
-    public final void setValue(Integer value) {
+    public final void setValue(Float value) {
         this.value = value;
-    }    
+    }
 
     @Override
     public int getSQLType() {
-        return java.sql.Types.INTEGER;
+        return java.sql.Types.FLOAT;
     }
     
     @Override
     public Object getParamValue() {
         return value;
     }
+    
 }

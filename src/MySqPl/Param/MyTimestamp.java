@@ -3,34 +3,36 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MySqlProcedure.Param;
+package MySqPl.Param;
 
-import java.math.BigDecimal;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
  * @author BARIS
  */
-public class MyDecimal extends MyParam {
+public class MyTimestamp extends MyParam {
+
+    private Date value;
     
-    private BigDecimal value = null;
-    
-    public MyDecimal(BigDecimal value ) {
+    public MyTimestamp(Date value ) {
         setValue(value);
     }
 
-    public MyDecimal(BigDecimal value,String name) {        
+    public MyTimestamp(Date value,String name) {
         setValue(value);
         setName(name);        
     }
 
-    public final void setValue(BigDecimal value) {
+    public final void setValue(Date value) {
         this.value = value;
     }
 
     @Override
     public int getSQLType() {
-        return java.sql.Types.DECIMAL;
+        return java.sql.Types.TIMESTAMP;
     }
     
     @Override

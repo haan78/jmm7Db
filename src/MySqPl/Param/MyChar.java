@@ -3,22 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MySqlProcedure.Param;
+package MySqPl.Param;
 
 /**
  *
  * @author BARIS
  */
-public class MyVChar extends MyParam {
+public class MyChar extends MyParam {
 
     private String value;
     private boolean noEmpty = true;    
 
-    public MyVChar(String value ) {        
+    public MyChar(String value ) {        
         setValue(value);
     }
 
-    public MyVChar(String value,String name) {
+    public MyChar(String value,String name) {
         setValue(value);
         setName(name);        
     }
@@ -33,7 +33,7 @@ public class MyVChar extends MyParam {
 
     @Override
     public int getSQLType() {
-        return java.sql.Types.VARCHAR;
+        return java.sql.Types.CHAR;
     }
     
     @Override
@@ -42,4 +42,5 @@ public class MyVChar extends MyParam {
         if ( (noEmpty) && (value.isEmpty()) ) return null; else
         return value;
     }
+    
 }
