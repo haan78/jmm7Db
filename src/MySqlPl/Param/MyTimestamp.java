@@ -5,8 +5,7 @@
  */
 package MySqlPl.Param;
 
-import java.text.Format;
-import java.text.SimpleDateFormat;
+
 import java.util.Date;
 
 /**
