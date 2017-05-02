@@ -17,9 +17,6 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -116,7 +113,7 @@ public class MySqlPl {
     }
     
     public Object function(String functionName) throws SQLException {
-        Object result = null;
+
         String str = "SELECT "+functionName+"(";
         for (int i=0; i<params.size(); i++) {
             if (i>0) str+=",";
