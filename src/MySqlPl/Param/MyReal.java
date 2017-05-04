@@ -35,5 +35,15 @@ public class MyReal extends MyParam {
     public Object getParamValue() {
         return value;
     }
+
+    @Override
+    public void setObjectValue(Object val) {
+        setValue( (Float)val );
+    }
+    
+    @Override
+    public Object getObjectValue() {
+        return value;
+    }
     
 }

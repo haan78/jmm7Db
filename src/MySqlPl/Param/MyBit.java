@@ -38,5 +38,16 @@ public class MyBit extends MyParam {
         else return 0;
         
     }
+
+    @Override
+    public void setObjectValue(Object val) {
+        if (val==null) setValue(null);
+        else if ( (int)val == 1 ) setValue( true );
+        else setValue( false );         
+    }
+    @Override
+    public Object getObjectValue() {
+        return value;
+    }
     
 }

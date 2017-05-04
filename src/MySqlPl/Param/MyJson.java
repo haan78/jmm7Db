@@ -39,5 +39,21 @@ public class MyJson extends MyParam {
         g = new com.google.gson.GsonBuilder().setDateFormat(dateFormat).create();
         return g.toJson(value);
     }
+
+    @Override
+    public void setObjectValue(Object val) {
+        if ( value !=null ) {
+            Gson g;
+            g = new com.google.gson.GsonBuilder().setDateFormat(dateFormat).create();
+            setValue( g.fromJson((String)val, value.getClass()) );
+        } else {
+            setValue(val);
+        }        
+    }
+    
+    @Override
+    public Object getObjectValue() {
+        return value;
+    }
     
 }

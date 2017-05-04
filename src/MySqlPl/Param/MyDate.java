@@ -37,5 +37,15 @@ public class MyDate extends MyParam {
     public Object getParamValue() {
         return value;
     }
+
+    @Override
+    public void setObjectValue(Object val) {
+        setValue( (Date)val );
+    }
+    
+    @Override
+    public Object getObjectValue() {
+        return value;
+    }
     
 }

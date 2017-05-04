@@ -35,5 +35,15 @@ public class MyFloat extends MyParam {
     public Object getParamValue() {
         return value;
     }
+
+    @Override
+    public void setObjectValue(Object val) {
+        setValue( (Double)val );
+    }
+    
+    @Override
+    public Object getObjectValue() {
+        return value;
+    }
     
 }

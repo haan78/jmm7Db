@@ -32,4 +32,8 @@ public abstract class MyParam {
     
     public abstract Object getParamValue();
     
+    public abstract void setObjectValue(Object val);
+    
+    public abstract Object getObjectValue();
+    
 }

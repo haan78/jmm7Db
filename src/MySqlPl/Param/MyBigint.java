@@ -35,5 +35,15 @@ public class MyBigint extends MyParam {
     public Object getParamValue() {
         return value;
     }
+
+    @Override
+    public void setObjectValue(Object val) {
+        setValue( (Long)val );
+    }
+
+    @Override
+    public Object getObjectValue() {
+        return value;
+    }
     
 }

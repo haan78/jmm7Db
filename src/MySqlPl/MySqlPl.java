@@ -87,7 +87,9 @@ public class MySqlPl {
         //HashMap<String,Object> outs = new HashMap<>();
         MySqlRowResult outs = new MySqlRowResult();
         for (int i=0; i<outids.length; i++) {
-            outs.put( params.get( outids[i] ).getName() , cstmt.getObject( outids[i]+1 ) ); // +1 in nedeni java parametreleri birden balayarak sayiyior
+            MyParam p = params.get( outids[i] );
+            p.setObjectValue( cstmt.getObject( outids[i]+1 ) ); // +1 in nedeni java parametreleri birden balayarak sayiyior
+            outs.put( p.getName(),p.getObjectValue() ); 
         }
         
         while( hasMore ) {

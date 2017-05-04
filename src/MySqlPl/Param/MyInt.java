@@ -35,4 +35,15 @@ public class MyInt extends MyParam {
     public Object getParamValue() {
         return value;
     }
+
+    @Override
+    public void setObjectValue(Object val) {
+        setValue( (Integer)val );
+    }
+    
+    @Override
+    public Object getObjectValue() {
+        return value;
+    }
+
 }

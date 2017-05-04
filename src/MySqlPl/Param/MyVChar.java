@@ -42,4 +42,16 @@ public class MyVChar extends MyParam {
         if ( (noEmpty) && (value.isEmpty()) ) return null; else
         return value;
     }
+
+    @Override
+    public void setObjectValue(Object val) {
+        setValue( (String)val );
+    }
+    
+    
+    @Override
+    public Object getObjectValue() {
+        return value;
+    }
+    
 }
