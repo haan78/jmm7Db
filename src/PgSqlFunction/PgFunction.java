@@ -20,9 +20,19 @@ import java.util.ArrayList;
 public final class PgFunction {
     private final ArrayList<PgFunctionParam> params; 
     private final PgResultParser parser = new PgResultParser();
+    private String defaultDateFormat = "yyyy-MM-dd";
+    private String defaultDateTimeFormat = "yyyy-MM-dd HH:mm:ss";
     
     private String functionName;
     private Connection connection;
+
+    public void setDefaultDateFormat(String defaultDateFormat) {
+        this.defaultDateFormat = defaultDateFormat;
+    }
+
+    public void setDefaultFateTimeFormat(String defaultFateTimeFormat) {
+        this.defaultDateTimeFormat = defaultFateTimeFormat;
+    }
     
     public PgFunction() {        
         this.params = new ArrayList<>();
@@ -41,6 +51,20 @@ public final class PgFunction {
     
     public void setFunctionName(String name) {
         functionName = name;
+    }
+    
+    public PgFunction param(Object value,String type) {
+        PgFunctionParam p = new PgFunctionParam(value,type);
+        p.setDateFormat(defaultDateFormat);
+        p.setDateTimeFormat(defaultDateTimeFormat);        
+        return addParam(p);
+    }
+    
+    public PgFunction param(Object value) {
+        PgFunctionParam p = new PgFunctionParam(value,null);
+        p.setDateFormat(defaultDateFormat);
+        p.setDateTimeFormat(defaultDateTimeFormat);
+        return addParam(p);
     }
     
     public PgFunction addParam(PgFunctionParam p) {

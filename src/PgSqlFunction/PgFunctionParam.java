@@ -19,6 +19,10 @@ public class PgFunctionParam {
     public PgFunctionParam(Object value, String type) {
         setValue(value, type);
     }
+    
+    public PgFunctionParam(Object value) {
+        setValue(value);
+    }
 
     public void setDateTimeFormat(String dateTimeFormat) {
         this.dateTimeFormat = dateTimeFormat;
@@ -33,10 +37,19 @@ public class PgFunctionParam {
         this.value = value;
     }
     
+    public final void setValue(Object value) {
+        this.type = null;
+        this.value = value;
+    }
+    
     public String pgValue() throws IllegalArgumentException, IllegalAccessException {
         PgRenderObject ro;
         ro = new PgRenderObject(value, dateTimeFormat, dateFormat);
-        return "'"+ro.toPgString()+"'::"+type;    
+        if ( type != null ) {
+            return ""+ro.toPgString()+"::"+type;    
+        } else {
+            return ""+ro.toPgString()+"";
+        }        
     }
     
 }

@@ -177,7 +177,7 @@ public class PgRenderObject {
     
     private String objectToPg(Object o) throws IllegalArgumentException, IllegalAccessException {
         inObject = true;
-        String s = "(";
+        String s = "ROW(";
         Field[] fl = o.getClass().getFields();
         
         for (int i=0; i<fl.length; i++) {
@@ -196,27 +196,30 @@ public class PgRenderObject {
         }
 
         
-        String t = o.getClass().getTypeName();
+        String tip = o.getClass().getTypeName();
         if ( o.getClass().isArray() ) {
             return arrayToPg(  (Object[])o );
-        } else if ( t.equals("java.lang.String") ) {
-            return inObject ? "\""+(String)o+"\"" : (String)o;
-        } else if ( t.equals("java.lang.Integer") ) {
+        } else if ( tip.equals("java.lang.String") ) {
+            //return inObject ? "'"+(String)o+"'" : (String)o;
+            return "'"+(String)o+"'";
+        } else if ( tip.equals("java.lang.Integer") ) {
             return Integer.toString( (int)o );
-        } else if (t.equals("float")) {
+        } else if (tip.equals("float")) {
             return Float.toString( (float)o );
-        } else if (t.equals("java.lang.Long")) {
+        } else if (tip.equals("java.lang.Long")) {
             return Long.toString( (long)o );
-        } else if (t.equals("short")) {
+        } else if (tip.equals("short")) {
             return Short.toString( (short)o );
-        } else if (t.equals("double")) {
+        } else if (tip.equals("double")) {
             return Double.toString( (double)o );
-        } else if (t.equals("boolean")) {
+        } else if (tip.equals("boolean")) {
             return ((boolean)o) == true ? "1" : "0";
-        } else if ( t.equals("char") ) {
+        } else if (tip.equals("java.lang.Boolean")) {
+            return ((Boolean)o) == true ? "1" : "0";
+        } else if ( tip.equals("char") ) {
             return ((String)o);
-        } else if (t.equals("java.util.Date")) {
-            return inObject ? "\""+_DatetoString((Date)o)+"\"" : _DatetoString((Date)o);
+        } else if (tip.equals("java.util.Date")) {
+            return inObject ? "'"+_DatetoString((Date)o)+"'" : _DatetoString((Date)o);
         } else {
             return objectToPg(o);
         }        
@@ -224,12 +227,12 @@ public class PgRenderObject {
     
     private String arrayToPg(Object[] arr) throws IllegalArgumentException, IllegalAccessException {
         inObject = true;
-        String s = "{";
+        String s = "ARRAY[";
         for (int i=0; i<arr.length; i++) {
             if ( i > 0 ) s += ",";
             s += valueToPg( arr[i] );
         }
-        s += "}";
+        s += "]";
         return s;
     }
     
