@@ -140,10 +140,10 @@ public class PgResultParser {
                     case "boolean":
                         if (row[i] == null) f.set(obj, false); else f.set(obj, ro.toBool());
                         break;
-                    case "Boolean":
+                    case "java.lang.Boolean":
                         if (row[i] == null) f.set(obj, null); else f.set(obj, ro.toBool());
                         break;
-                    case "Boolean[]":
+                    case "java.lang.Boolean[]":
                         if (row[i] == null) f.set(obj, null); else f.set(obj, ro.toBoolArray());
                         break;
                     case "java.util.Date":
