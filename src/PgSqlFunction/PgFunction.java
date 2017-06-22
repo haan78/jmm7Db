@@ -101,7 +101,7 @@ public final class PgFunction {
         return  sql;
     }
     
-    private String generatePerformSql() throws IllegalArgumentException, IllegalAccessException {
+    /*private String generatePerformSql() throws IllegalArgumentException, IllegalAccessException {
         String sql = "PERFORM";
         sql += " "+functionName;
         sql += "(";
@@ -111,11 +111,11 @@ public final class PgFunction {
         }
         sql += ")";
         return  sql;
-    }
+    }*/
     
     public void execute() throws SQLException, IllegalArgumentException, IllegalAccessException {
         Statement stmt = connection.createStatement();
-        stmt.execute( generatePerformSql() );
+        stmt.execute( generateSelectSql() );
     }
     
     public Object result() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException, ParseException {        
