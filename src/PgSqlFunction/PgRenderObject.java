@@ -219,7 +219,8 @@ public class PgRenderObject {
         } else if ( tip.equals("char") ) {
             return ((String)o);
         } else if (tip.equals("java.util.Date")) {
-            return inObject ? "'"+_DatetoString((Date)o)+"'" : _DatetoString((Date)o);
+            return "'"+_DatetoString((Date)o)+"'";
+            //return inObject ? "'"+_DatetoString((Date)o)+"'" : _DatetoString((Date)o);
         } else {
             return objectToPg(o);
         }        
