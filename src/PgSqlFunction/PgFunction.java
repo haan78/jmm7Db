@@ -95,7 +95,11 @@ public final class PgFunction {
         sql += "(";
         for (int i=0; i<params.size(); i++) {
             if ( i>0 ) sql+=",";
-            sql += params.get(i).pgValue();
+            if ( params.get(i)!=null ) {
+                sql += params.get(i).pgValue();
+            } else {
+                sql +="NULL";
+            }            
         }
         sql += ")";
         return  sql;
